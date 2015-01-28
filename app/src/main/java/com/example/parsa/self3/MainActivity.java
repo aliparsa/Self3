@@ -210,7 +210,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        history.setImageResource(R.drawable.ic_history);
+        history.setImageResource(R.drawable.ic_shopping_cart);
         context = this;
         history.setOnClickListener(new View.OnClickListener() {
             @Override
