@@ -21,10 +21,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         try {
             switch (i) {
                 case 0:
-                    fragment = new PageOneFragment();
+                    fragment = new ReserveFragment();
                     args = new Bundle();
                     // Our object is just an integer :-P
-                    args.putInt(PageOneFragment.ARG_OBJECT, i + 1);
+                    args.putInt(ReserveFragment.ARG_OBJECT, i + 1);
                     fragment.setArguments(args);
                     return fragment;
 

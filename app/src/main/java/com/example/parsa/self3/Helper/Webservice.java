@@ -37,9 +37,9 @@ public class Webservice {
             String SERVER_ADDRESS = setting.getOption("serverAddress");
 
             final String NAMESPACE = SERVER_ADDRESS+"/Areas/Buffet/Service/";
-            final String METHOD_NAME = "Self3Login";
-            final String URL = SERVER_ADDRESS+"/areas/buffet/service/webserviceAndroid.asmx?op=Self3Login";
-            final String SOAP_ACTION =SERVER_ADDRESS+ "/Areas/Buffet/Service/Self3Login";
+            final String METHOD_NAME = "Self3_Login";
+            final String URL = SERVER_ADDRESS+"/areas/buffet/service/webserviceAndroid.asmx?op=Self3_Login";
+            final String SOAP_ACTION =SERVER_ADDRESS+ "/Areas/Buffet/Service/Self3_Login";
 
             SoapHelper soapHelper = new SoapHelper(context,NAMESPACE, METHOD_NAME, URL, SOAP_ACTION);
 
@@ -67,14 +67,13 @@ public class Webservice {
                         switch (resultCode) {
                             case RESULT_OK: {
 
+                                String uid = result.getString("uid");
                                 int id = result.getInt("PersonelId");
                                 String firstName = result.getString("FName");
                                 String lastName = result.getString("LName");
                                 double finalCredit = result.getDouble("finalcredit");
                                 String code = result.getString("Code");
-
-
-                                callback.onSuccess(new Personnel(id,firstName,lastName,code,finalCredit));
+                                callback.onSuccess(new Personnel(uid,id,firstName,lastName,code,finalCredit));
 
                                 break;
                             }
@@ -105,79 +104,79 @@ public class Webservice {
 
 
     //-getPersonnelInfo-------------------------------------------------
-    public static void GetPersonelInfo(Context context,final String cardNo, final CallBack<Personnel> callback) {
-
-        try {
-            SettingHelper setting = new SettingHelper(context);
-            String SERVER_ADDRESS = setting.getOption("serverAddress");
-            if (SERVER_ADDRESS==null)
-                SERVER_ADDRESS="http://192.168.0.11:6061";
-
-            final String NAMESPACE = SERVER_ADDRESS+"/Areas/Buffet/Service/";
-            final String METHOD_NAME = "GetPersonelInfo";
-            final String URL = SERVER_ADDRESS+"/areas/buffet/service/webserviceAndroid.asmx?op=GetPersonelInfo";
-            final String SOAP_ACTION =SERVER_ADDRESS+ "/Areas/Buffet/Service/GetPersonelInfo";
-
-            SoapHelper soapHelper = new SoapHelper(context,NAMESPACE, METHOD_NAME, URL, SOAP_ACTION);
-
-            ArrayList<String> names = new ArrayList<String>();
-            ArrayList<String> values = new ArrayList<String>();
-
-            names.add("cardNo");
-            values.add(cardNo);
-
-
-            soapHelper.SendRequestToServer(names,values, new CallBack<JSONObject>() {
-                @Override
-                public void onSuccess(JSONObject result) {
-                    try {
-
-                        int resultCode = resultCode = result.getInt("ResultCode");
-
-                        if(resultCode != RESULT_OK){
-
-                            result = new JSONObject("");
-                        }
-
-                        switch (resultCode) {
-                            case RESULT_OK: {
-
-                                int id = result.getInt("PersonelId");
-                                String firstName = result.getString("FName");
-                                String lastName = result.getString("LName");
-                                double finalCredit = result.getDouble("finalcredit");
-                                String code = result.getString("Code");
-
-
-                                callback.onSuccess(new Personnel(id,firstName,lastName,code,finalCredit));
-
-                                break;
-                            }
-                            case RESULT_ERROR: {
-                                callback.onError(result.getString("ErrorMessage"));
-                                break;
-                            }
-                            default: {
-                                callback.onError("server response is not valid ");
-                                break;
-                            }
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override
-                public void onError(String errorMessage) {
-                    callback.onError(errorMessage);
-                }
-            });
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public static void GetPersonelInfo(Context context,final String cardNo, final CallBack<Personnel> callback) {
+//
+//        try {
+//            SettingHelper setting = new SettingHelper(context);
+//            String SERVER_ADDRESS = setting.getOption("serverAddress");
+//            if (SERVER_ADDRESS==null)
+//                SERVER_ADDRESS="http://192.168.0.11:6061";
+//
+//            final String NAMESPACE = SERVER_ADDRESS+"/Areas/Buffet/Service/";
+//            final String METHOD_NAME = "GetPersonelInfo";
+//            final String URL = SERVER_ADDRESS+"/areas/buffet/service/webserviceAndroid.asmx?op=GetPersonelInfo";
+//            final String SOAP_ACTION =SERVER_ADDRESS+ "/Areas/Buffet/Service/GetPersonelInfo";
+//
+//            SoapHelper soapHelper = new SoapHelper(context,NAMESPACE, METHOD_NAME, URL, SOAP_ACTION);
+//
+//            ArrayList<String> names = new ArrayList<String>();
+//            ArrayList<String> values = new ArrayList<String>();
+//
+//            names.add("cardNo");
+//            values.add(cardNo);
+//
+//
+//            soapHelper.SendRequestToServer(names,values, new CallBack<JSONObject>() {
+//                @Override
+//                public void onSuccess(JSONObject result) {
+//                    try {
+//
+//                        int resultCode = resultCode = result.getInt("ResultCode");
+//
+//                        if(resultCode != RESULT_OK){
+//
+//                            result = new JSONObject("");
+//                        }
+//
+//                        switch (resultCode) {
+//                            case RESULT_OK: {
+//
+//                                int id = result.getInt("PersonelId");
+//                                String firstName = result.getString("FName");
+//                                String lastName = result.getString("LName");
+//                                double finalCredit = result.getDouble("finalcredit");
+//                                String code = result.getString("Code");
+//
+//
+//                                callback.onSuccess(new Personnel(id,firstName,lastName,code,finalCredit));
+//
+//                                break;
+//                            }
+//                            case RESULT_ERROR: {
+//                                callback.onError(result.getString("ErrorMessage"));
+//                                break;
+//                            }
+//                            default: {
+//                                callback.onError("server response is not valid ");
+//                                break;
+//                            }
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//
+//                @Override
+//                public void onError(String errorMessage) {
+//                    callback.onError(errorMessage);
+//                }
+//            });
+//
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
     //-----------------------------------------------------------------------------
     public static void GetMenuFoods(Context context,final String date, final String cardNo, final CallBack<ArrayList<MenuFood>> callback) {
 

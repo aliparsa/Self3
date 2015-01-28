@@ -9,9 +9,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.parsa.self3.Adapter.ListViewObjectAdapter;
 import com.example.parsa.self3.DataModel.DateItem;
+import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.Helper.DateHelper;
 import com.example.parsa.self3.Helper.PersianCalendar;
 import com.example.parsa.self3.R;
@@ -23,6 +25,7 @@ public class SelectDateActivity extends Activity {
     private Context context;
     ListViewObjectAdapter dateAdapter;
     ListView datelv;
+    Personnel personnel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +33,14 @@ public class SelectDateActivity extends Activity {
         setContentView(R.layout.activity_date_picker);
         context=this;
 
+        personnel = (Personnel) getIntent().getSerializableExtra("personnel");
+
+
+
         // init
         datelv = (ListView) findViewById(R.id.dateListview);
+
+        Toast.makeText(context,personnel.getName()+" " + personnel.getFamily(),Toast.LENGTH_SHORT).show();
 
         fillDateListView();
     }
@@ -72,7 +81,10 @@ public class SelectDateActivity extends Activity {
 //                lastSelectedDayIndex = i;
                 DateItem item = ((DateItem.Holder) view.getTag()).getDateItem();
                 Intent intent = new Intent(context,MainActivity.class);
+
                 intent.putExtra("dateItem",item);
+                intent.putExtra("personnel",personnel);
+                
                 startActivity(intent);
 
             }

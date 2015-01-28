@@ -92,8 +92,12 @@ public class LoginActivity extends Activity {
         Webservice.Login(context, username, password, new CallBack<Personnel>() {
             @Override
             public void onSuccess(Personnel result) {
-                //AccountHelper.getInstant(context).storeToken(result.getToken());
-                //callMainActivity(result);
+
+                Intent intent = new Intent(context,SelectDateActivity.class);
+                intent.putExtra("personnel",result);
+                startActivity(intent);
+                finish();
+
                 //TODO login here
             }
 
