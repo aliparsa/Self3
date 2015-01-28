@@ -22,13 +22,13 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:textColor="#fff"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:gravity="center"
             />
 
         <ImageView
             android:id="@+id/ac_back"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="fill_parent"
             android:src="@drawable/ic_back"
             android:padding="3dp"
@@ -44,7 +44,7 @@
 
     <ImageView
     android:id="@+id/ac_action1"
-    android:layout_width="50dp"
+    android:layout_width="60dp"
     android:layout_height="fill_parent"
     android:layout_alignParentLeft="true"
         android:background="@drawable/hit"
@@ -53,7 +53,7 @@
 
     <ImageView
         android:id="@+id/ac_action2"
-        android:layout_width="50dp"
+        android:layout_width="60dp"
         android:layout_height="fill_parent"
         android:layout_toRightOf="@+id/ac_action1"
         android:background="@drawable/hit"

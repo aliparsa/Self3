@@ -233,6 +233,8 @@ public class MainActivity extends ActionBarActivity {
         selectedFoods.add(menuFood);
 
         shopping.setImageResource(R.drawable.ic_shopping_cart_i);
+
+        Toast.makeText(context, menuFood.getFoodCaption() + " به سبد خرید افزوده شد! ", Toast.LENGTH_LONG);
     }
 }
 
