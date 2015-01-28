@@ -219,6 +219,10 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(context,BasketActivity.class);
+                intent.putExtra("personnel",personnel);
+                intent.putExtra("dateItem",dateItem);
+                startActivity(intent);
 
             }
         });
