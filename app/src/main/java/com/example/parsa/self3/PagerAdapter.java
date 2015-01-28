@@ -5,8 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.parsa.self3.Fragment.PageOneFragment;
-import com.example.parsa.self3.Fragment.MenuFoodFragment;
+
 
 // Since this is an object collection, use a FragmentStatePagerAdapter,
 // and NOT a FragmentPagerAdapter.
