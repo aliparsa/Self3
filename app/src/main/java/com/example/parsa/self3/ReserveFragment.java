@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 /**
  * Created by parsa on 2015-01-28.
  */
-public  class PageOneFragment extends Fragment {
+public  class ReserveFragment extends Fragment {
     public static final String ARG_OBJECT = "object";
 
     @Override

@@ -18,6 +18,12 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        // init
+        mViewPager =  (ViewPager) findViewById(R.id.pager);
+
+
+
         actionBar=getActionBar();
 
 
@@ -53,13 +59,67 @@ public class MainActivity extends FragmentActivity {
             }
         };
 
-        // Add 3 tabs, specifying the tab's text and TabListener
-        for (int i = 0; i < 2; i++) {
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText("Tab " + (i + 1))
-                            .setTabListener(tabListener));
-        }
+
+
+
+
+
+        actionBar.addTab(
+                actionBar.newTab()
+                        .setText("رزرو امروز")
+                        .setTabListener(new ActionBar.TabListener() {
+                            @Override
+                            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction fragmentTransaction) {
+                                mViewPager.setCurrentItem(tab.getPosition());
+                            }
+
+                            @Override
+                            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction fragmentTransaction) {
+
+                            }
+
+                            @Override
+                            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction fragmentTransaction) {
+
+                            }
+                        }));
+
+
+
+        actionBar.addTab(
+                actionBar.newTab()
+                        .setText("منو غذا")
+                        .setTabListener(new ActionBar.TabListener() {
+                            @Override
+                            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction fragmentTransaction) {
+                                mViewPager.setCurrentItem(tab.getPosition());
+                            }
+
+                            @Override
+                            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction fragmentTransaction) {
+
+                            }
+
+                            @Override
+                            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction fragmentTransaction) {
+
+                            }
+                        }));
+
+
+
+        // تغییر تب فعال هنگام سویپ روی صفحه
+        mViewPager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        actionBar.setSelectedNavigationItem(position);
+                    }
+                }
+        );
+
+
+
 
 
         // ViewPager and its adapters use support library
@@ -67,8 +127,15 @@ public class MainActivity extends FragmentActivity {
         mDemoCollectionPagerAdapter =
                 new PagerAdapter(
                         getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.pager);
+
+
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
+
+        mViewPager.setCurrentItem(1);
+
+
+        // Lets Make History
+
     }
 }
 

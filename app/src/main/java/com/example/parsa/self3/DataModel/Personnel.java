@@ -13,13 +13,15 @@ import com.example.parsa.self3.R;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by parsa on 2014-12-06.
  */
-public class Personnel implements IListViewItem {
+public class Personnel implements IListViewItem,Serializable {
 
+    String uid;
     int id;
     String name;
     String family;
@@ -29,13 +31,13 @@ public class Personnel implements IListViewItem {
     String code;
 
 
-    public Personnel(int id, String name, String family, String code, double finalCridit) {
+    public Personnel(String uid,int id, String name, String family, String code, double finalCridit) {
+        this.uid = uid;
         this.id = id;
         this.name = name;
         this.family = family;
         this.code = code;
         this.finalCridit=finalCridit;
-
     }
 
     public Personnel(int id, String name, String family, String nationalNo, String imageUrl) {

@@ -4,23 +4,12 @@
     android:layout_height="match_parent"
     android:background="#ffc0c0c0"
     tools:context=".fragment.FaliatFragment">
+
+
     <TextView
         android:id="@+id/text1"
+        android:text="RESERVE FRAGMENT"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
-
-    <ListView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/lv_faliatListView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentRight="true"
-        android:dividerHeight="0dp"
-        android:scrollingCache="false"
-        android:cacheColorHint="@android:color/transparent"
-        android:divider="@null"
-        android:layout_alignParentBottom="true" />
 
 </FrameLayout>
