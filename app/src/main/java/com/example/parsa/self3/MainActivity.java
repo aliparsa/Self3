@@ -76,6 +76,83 @@ public class MainActivity extends ActionBarActivity {
                         getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
+
+
+        actionBar.addTab(
+                actionBar.newTab()
+                        .setText("رزرو امروز")
+                        .setTabListener(new ActionBar.TabListener() {
+
+                            @Override
+                            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+                                mViewPager.setCurrentItem(tab.getPosition());
+
+                            }
+
+                            @Override
+                            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+                            }
+
+                            @Override
+                            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+                            }
+                        }));
+
+
+
+        actionBar.addTab(
+                actionBar.newTab()
+                        .setText("منو غذا")
+                        .setTabListener(new ActionBar.TabListener() {
+                            @Override
+                            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+                                mViewPager.setCurrentItem(tab.getPosition());
+
+                            }
+
+                            @Override
+                            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+                            }
+
+                            @Override
+                            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+                            }
+                        }));
+
+
+
+        // تغییر تب فعال هنگام سویپ روی صفحه
+        mViewPager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        actionBar.setSelectedNavigationItem(position);
+                    }
+                }
+        );
+
+
+
+
+
+        // ViewPager and its adapters use support library
+        // fragments, so use getSupportFragmentManager.
+        mDemoCollectionPagerAdapter =
+                new PagerAdapter(
+                        getSupportFragmentManager());
+
+
+        mViewPager.setAdapter(mDemoCollectionPagerAdapter);
+
+        mViewPager.setCurrentItem(1);
+
+
+
+        prepareActionBar();
     }
 
     private void prepareActionBar() {
