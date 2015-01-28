@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_date_picker">DatePickerActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_reserve_history">ReserveHistory</string>
 
 </resources>
