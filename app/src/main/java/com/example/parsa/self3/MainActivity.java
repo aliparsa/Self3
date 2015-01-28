@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.parsa.self3.DataModel.DateItem;
+import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.Helper.FontHelper;
 
 
@@ -28,6 +30,8 @@ public class MainActivity extends ActionBarActivity {
     private ImageView user;
     private ImageView history;
     private Context context;
+    public Personnel personnel;
+    public DateItem dateItem;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,10 @@ public class MainActivity extends ActionBarActivity {
 
 
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        dateItem = (DateItem) getIntent().getSerializableExtra("dateItem");
+        personnel = (Personnel) getIntent().getSerializableExtra("personnel");
+
 
         // Create a tab listener that is called when the user changes tabs.
         ActionBar.TabListener tabListener = new ActionBar.TabListener() {
@@ -60,13 +68,6 @@ public class MainActivity extends ActionBarActivity {
             }
         };
 
-        // Add 3 tabs, specifying the tab's text and TabListener
-        for (int i = 0; i < 2; i++) {
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText("Tab " + (i + 1))
-                            .setTabListener(tabListener));
-        }
 
 
         // ViewPager and its adapters use support library

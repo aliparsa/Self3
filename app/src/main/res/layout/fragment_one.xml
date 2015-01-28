@@ -6,10 +6,9 @@
     tools:context=".fragment.FaliatFragment">
 
 
-    <TextView
-        android:id="@+id/text1"
-        android:text="RESERVE FRAGMENT"
+    <ListView
+        android:id="@+id/reserveLV"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"></ListView>
 
 </FrameLayout>
