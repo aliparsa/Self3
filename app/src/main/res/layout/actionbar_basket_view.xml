@@ -42,24 +42,33 @@
 
 
 
-    <ImageView
-    android:id="@+id/ac_action1"
-    android:layout_width="60dp"
-    android:layout_height="fill_parent"
-    android:layout_alignParentLeft="true"
+    <LinearLayout
+        android:id="@+id/ac_action1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:background="@drawable/hit"
-        android:padding="3dp"
-    />
+        >
 
-    <ImageView
-        android:id="@+id/ac_action2"
-        android:layout_width="60dp"
-        android:layout_height="fill_parent"
-        android:layout_toRightOf="@+id/ac_action1"
-        android:background="@drawable/hit"
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:padding="3dp"
+            android:src="@drawable/ic_pay"
+            />
 
-        android:padding="3dp"
-        />
+        <TextView
+            android:id="@+id/txt_price"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@+id/ac_action1"
+            android:padding="3dp"
+            android:gravity="center"
+            />
+
+        </LinearLayout>
+
+
 
 
 </RelativeLayout>

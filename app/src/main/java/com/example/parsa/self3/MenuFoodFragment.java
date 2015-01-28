@@ -12,12 +12,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.parsa.self3.Adapter.ListViewObjectAdapter;
 import com.example.parsa.self3.DataModel.LoadingItem;
 import com.example.parsa.self3.DataModel.MenuFood;
 import com.example.parsa.self3.DataModel.NoItem;
 import com.example.parsa.self3.DataModel.Reserve;
+import com.example.parsa.self3.DataModel.Shopping;
 import com.example.parsa.self3.Helper.Webservice;
 import com.example.parsa.self3.Interface.CallBack;
 import com.example.parsa.self3.Interface.FragmentCallback;
@@ -54,6 +56,10 @@ public  class MenuFoodFragment extends Fragment {
                 MenuFood food = ((MenuFood.Holder) view.getTag()).menufood;
 
                 ((MainActivity) context).addNewFood(food);
+
+                Shopping.selectedFoods.add(food);
+
+                Toast.makeText(context, food.getFoodCaption() + " به سبد خرید افزوده شد! ", Toast.LENGTH_SHORT).show();
             }
         });
 

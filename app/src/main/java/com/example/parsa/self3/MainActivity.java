@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.parsa.self3.DataModel.DateItem;
 import com.example.parsa.self3.DataModel.MenuFood;
 import com.example.parsa.self3.DataModel.Personnel;
+import com.example.parsa.self3.DataModel.Shopping;
 import com.example.parsa.self3.Helper.FontHelper;
 
 import java.util.ArrayList;
@@ -229,13 +230,18 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(Shopping.selectedFoods.size() > 0){
+            shopping.setImageResource(R.drawable.ic_shopping_cart_i);
+        }else{
+            shopping.setImageResource(R.drawable.ic_shopping_cart);
+        }
+    }
+
     public void addNewFood(MenuFood menuFood){
-
-        if(selectedFoods == null)
-            selectedFoods = new ArrayList<MenuFood>();
-
-        selectedFoods.add(menuFood);
-
         shopping.setImageResource(R.drawable.ic_shopping_cart_i);
     }
 }
