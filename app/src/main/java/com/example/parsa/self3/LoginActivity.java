@@ -73,14 +73,14 @@ public class LoginActivity extends Activity {
         String localUid = settingHelper.getOption("uid");
         if (localUid!=null){
 
-            final ProgressDialog dialog = ProgressDialog.show(context, "دریافت اطلاعات",
-                    "کمی صبر کنید", true);
-            dialog.show();
+//            final ProgressDialog dialog = ProgressDialog.show(context, "دریافت اطلاعات",
+//                    "کمی صبر کنید", true);
+//            dialog.show();
 
             Webservice.GetPersonnelInfo(context,localUid,new CallBack<Personnel>() {
                 @Override
                 public void onSuccess(Personnel result) {
-                    dialog.dismiss();
+                 //   dialog.dismiss();
 
                     Intent intent = new Intent(context,SelectDateActivity.class);
                     intent.putExtra("personnel",result);
@@ -90,7 +90,7 @@ public class LoginActivity extends Activity {
 
                 @Override
                 public void onError(String errorMessage) {
-                    dialog.dismiss();
+                 //   dialog.dismiss();
                     Toast.makeText(context,"ورود خودکار موفقیت آمیز نبود",Toast.LENGTH_SHORT).show();
                 }
             });
