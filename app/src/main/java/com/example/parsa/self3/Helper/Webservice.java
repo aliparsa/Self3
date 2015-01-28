@@ -101,9 +101,6 @@ public class Webservice {
             e.printStackTrace();
         }
     }
-
-
-
     //-----------------------------------------------------------------------------
     public static void GetMenuFoods(Context context,final String date, final String uid, final CallBack<ArrayList<MenuFood>> callback) {
 
@@ -212,7 +209,6 @@ public class Webservice {
             e.printStackTrace();
         }
     }
-//
 //    //-----------------------------------------------------------------------------
     public static void GetReserves(Context context,final String date, final String uid, final CallBack<ArrayList<Reserve>> callback) {
 
@@ -502,7 +498,7 @@ public static void CancelReserve(Context context,String reserveId, final CallBac
     }
 
 //-----------------------------------------------------------------------------------------------------
-public static void GetHistory(Context context,final String date, final String cardNo, final CallBack<ArrayList<ReserveHistory>> callback) {
+public static void GetHistory(Context context,final String date, final String uid, final CallBack<ArrayList<ReserveHistory>> callback) {
 
     try {
         SettingHelper setting = new SettingHelper(context);
@@ -511,9 +507,9 @@ public static void GetHistory(Context context,final String date, final String ca
             SERVER_ADDRESS="http://192.168.0.11:6061";
 
         final String NAMESPACE = SERVER_ADDRESS+"/Areas/Buffet/Service/";
-        final String METHOD_NAME = "GetHistory";
-        final String URL = SERVER_ADDRESS+"/areas/buffet/service/webserviceAndroid.asmx?op=GetHistory";
-        final String SOAP_ACTION =SERVER_ADDRESS+ "/Areas/Buffet/Service/GetHistory";
+        final String METHOD_NAME = "Self3_GetHistory";
+        final String URL = SERVER_ADDRESS+"/areas/buffet/service/webserviceAndroid.asmx?op=Self3_GetHistory";
+        final String SOAP_ACTION =SERVER_ADDRESS+ "/Areas/Buffet/Service/Self3_GetHistory";
 
         SoapHelper soapHelper = new SoapHelper(context,NAMESPACE, METHOD_NAME, URL, SOAP_ACTION);
 
@@ -521,8 +517,8 @@ public static void GetHistory(Context context,final String date, final String ca
         ArrayList<String> values = new ArrayList<String>();
 
 
-        names.add("cardNo");
-        values.add(cardNo);
+        names.add("uid");
+        values.add(uid);
 
         names.add("strStartDate");
         values.add(date);
