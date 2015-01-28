@@ -19,6 +19,7 @@
 
     <color name="icon_color">#E2FFF3</color>
     <color name="button_peessed">#4effffff</color>
+    <color name="button_pressed">#82b8c4ff</color>
 
 
     <color name="tab_bar_background">#ff02dac2</color>

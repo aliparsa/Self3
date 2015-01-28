@@ -17,8 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.parsa.self3.DataModel.DateItem;
+import com.example.parsa.self3.DataModel.MenuFood;
 import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.Helper.FontHelper;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -28,10 +31,11 @@ public class MainActivity extends ActionBarActivity {
     ViewPager mViewPager;
     ActionBar actionBar;
     private ImageView user;
-    private ImageView history;
     private Context context;
     public Personnel personnel;
     public DateItem dateItem;
+    private ImageView shopping;
+    private ArrayList<MenuFood> selectedFoods;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,7 +203,7 @@ public class MainActivity extends ActionBarActivity {
 
 
         user = (ImageView) customActionBar.findViewById(R.id.ac_action1);
-        history = (ImageView) customActionBar.findViewById(R.id.ac_action2);
+        shopping = (ImageView) customActionBar.findViewById(R.id.ac_action2);
 
         user.setImageResource(R.drawable.ic_user);
         user.setOnClickListener(new View.OnClickListener() {
@@ -210,9 +214,8 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        history.setImageResource(R.drawable.ic_shopping_cart);
-        context = this;
-        history.setOnClickListener(new View.OnClickListener() {
+        shopping.setImageResource(R.drawable.ic_shopping_cart);
+        shopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -220,6 +223,16 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+    }
+
+    public void addNewFood(MenuFood menuFood){
+
+        if(selectedFoods == null)
+            selectedFoods = new ArrayList<MenuFood>();
+
+        selectedFoods.add(menuFood);
+
+        shopping.setImageResource(R.drawable.ic_shopping_cart_i);
     }
 }
 
