@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:background="@color/login_button_background"
+    >
+
+
+    <LinearLayout
+        android:id="@+id/ac_back_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal"
+        android:background="@drawable/hit"
+
+        >
+
+        <TextView
+            android:id="@+id/ac_title"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:gravity="center"
+            />
+
+        <ImageView
+            android:id="@+id/ac_back"
+            android:layout_width="40dp"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_back"
+            android:padding="3dp"
+            />
+
+
+
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/ac_action1"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@drawable/hit"
+        >
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:padding="3dp"
+            android:src="@drawable/ic_pay"
+            />
+
+        <TextView
+            android:id="@+id/txt_price"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_toRightOf="@+id/ac_action1"
+            android:padding="3dp"
+            android:gravity="center"
+            />
+
+        </LinearLayout>
+
+
+
+
+</RelativeLayout>
