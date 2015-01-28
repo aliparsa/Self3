@@ -1,13 +1,16 @@
 package com.example.parsa.self3;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Choreographer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.parsa.self3.Adapter.ListViewObjectAdapter;
@@ -17,6 +20,7 @@ import com.example.parsa.self3.DataModel.NoItem;
 import com.example.parsa.self3.DataModel.Reserve;
 import com.example.parsa.self3.Helper.Webservice;
 import com.example.parsa.self3.Interface.CallBack;
+import com.example.parsa.self3.Interface.FragmentCallback;
 
 import java.util.ArrayList;
 
@@ -26,10 +30,13 @@ import java.util.ArrayList;
 public  class MenuFoodFragment extends Fragment {
     public static final String ARG_OBJECT = "object";
     private ListView foodMenuLV;
+    private Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        context = getActivity();
         // The last two arguments ensure LayoutParams are inflated
         // properly.
         View rootView = inflater.inflate(
@@ -39,6 +46,16 @@ public  class MenuFoodFragment extends Fragment {
 //                Integer.toString(args.getInt(ARG_OBJECT)));
 
         foodMenuLV = (ListView) rootView.findViewById(R.id.foodMenuLV);
+
+        foodMenuLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                MenuFood food = ((MenuFood.Holder) view.getTag()).menufood;
+
+                ((MainActivity) context).addNewFood(food);
+            }
+        });
 
         MainActivity mainActivity = (MainActivity) getActivity();
 
@@ -79,4 +96,8 @@ public  class MenuFoodFragment extends Fragment {
 
         return rootView;
     }
+
+
+
+
 }

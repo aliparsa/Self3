@@ -6,34 +6,7 @@
     android:weightSum="1"
     tools:context="com.pishgamanasia.self.Activity.DeliveryActivity">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/title_background"
 
-        >
-
-
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_back"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="سابقه رزرو"
-            android:id="@+id/txtSabegheReserve"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
-
-    </RelativeLayout>
 
 
     <LinearLayout
