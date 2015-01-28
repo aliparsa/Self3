@@ -49,6 +49,7 @@
                     android:textColorHint="#c2c2c2"
                     android:background="@drawable/user_pass_textfield_background"
                     android:gravity="center"
+                    android:text="admin"
                     android:singleLine="true"
                     />
 
@@ -56,7 +57,7 @@
                 <EditText
                     android:id="@+id/etxt_fragmentLogin_password"
                     android:hint="کلمه عبور"
-
+android:text="123456"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"

@@ -12,11 +12,13 @@ import com.example.parsa.self3.Helper.PersianCalendar;
 import com.example.parsa.self3.Interface.IListViewItem;
 import com.example.parsa.self3.R;
 
+import java.io.Serializable;
+
 
 /**
  * Created by parsa on 2015-01-20.
  */
-public class DateItem implements IListViewItem {
+public class DateItem implements IListViewItem,Serializable {
 
     private PersianCalendar date;
     private boolean isSelected = false;

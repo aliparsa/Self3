@@ -26,18 +26,10 @@ import com.example.parsa.self3.Interface.CallBack;
 import java.util.Calendar;
 
 
-public class MyActivity extends Activity {
+public class LoginActivity extends Activity {
 
-    private TextView servedCounter;
-    private TextView buffetName;
-    //private TextView montazerKart;
-    private TextView userName;
+
     private Context context;
-    private ImageView vazifeImage;
-    private ImageView exit;
-    private ImageView imgv_setting;
-    //private TextView montazer;
-
 
     //login
     EditText txtUsername;
@@ -72,6 +64,8 @@ public class MyActivity extends Activity {
         loaderBar = (ProgressBar) findViewById(R.id.pgb_fragmentLogin_loader);
         btnLogin = (Button) findViewById(R.id.btn_fragmentLogin_login);
         FontHelper.SetFont(context, FontHelper.Fonts.MAIN_FONT, btnLogin, Typeface.NORMAL);
+
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             public ValidationMessage validationMessage;
 
@@ -95,7 +89,7 @@ public class MyActivity extends Activity {
         btnLogin.setVisibility(View.GONE);
         loaderBar.setVisibility(View.VISIBLE);
 
-        Webservice.Login(context, username, password, "x12", new CallBack<Personnel>() {
+        Webservice.Login(context, username, password, new CallBack<Personnel>() {
             @Override
             public void onSuccess(Personnel result) {
                 //AccountHelper.getInstant(context).storeToken(result.getToken());

@@ -5,6 +5,7 @@ package com.example.parsa.self3.Helper;
  */
 
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -40,7 +41,7 @@ import java.util.GregorianCalendar;
  * void setGregorianDate(int year, int month, int day);
  * void setJulianDate(int year, int month, int day);
  */
-public class PersianCalendar {
+public class PersianCalendar implements Serializable {
 
     /**
      * JavaSource_Calendar:
