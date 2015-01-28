@@ -1,54 +1,61 @@
 package com.example.parsa.self3;
 
-import android.app.ActionBar;
+
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.parsa.self3.Helper.FontHelper;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends ActionBarActivity {
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
     PagerAdapter mDemoCollectionPagerAdapter;
     ViewPager mViewPager;
     ActionBar actionBar;
+    private ImageView user;
+    private ImageView history;
+    private Context context;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        actionBar=getActionBar();
+        context = this;
+
+        actionBar=getSupportActionBar();
 
 
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // Create a tab listener that is called when the user changes tabs.
         ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // show the given tab
-            }
 
-            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // hide the given tab
-            }
-
-            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // probably ignore this event
-            }
 
             @Override
-            public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction fragmentTransaction) {
+            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
             }
 
             @Override
-            public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction fragmentTransaction) {
+            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
             }
 
             @Override
-            public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction fragmentTransaction) {
+            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
             }
         };
@@ -69,6 +76,72 @@ public class MainActivity extends FragmentActivity {
                         getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
+    }
+
+    private void prepareActionBar() {
+
+        View customActionBar = getLayoutInflater().inflate(R.layout.actionbar_view, null);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_TABS);
+        actionBar.setCustomView(customActionBar);
+
+        actionBar.setLogo(null); // forgot why this one but it helped
+        actionBar.setIcon(null);
+
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setDisplayShowCustomEnabled(true);
+        actionBar.setDisplayUseLogoEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setHomeButtonEnabled(false);
+
+        View homeIcon = findViewById(android.R.id.home);
+
+        if (homeIcon != null) {
+            homeIcon.setVisibility(View.GONE);
+        }
+        if (homeIcon.getParent() != null) {
+            ((View) homeIcon.getParent()).setVisibility(View.GONE);
+        }
+
+
+        TextView title = (TextView) customActionBar.findViewById(R.id.ac_title);
+        FontHelper.SetFontBold(this, FontHelper.Fonts.MAIN_FONT, title);
+
+        title.setText("مدیریت سریع");
+        //ImageView back = (ImageView) customActionBar.findViewById(R.id.ac_back);
+        LinearLayout back = (LinearLayout) customActionBar.findViewById(R.id.ac_back_layout);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+        user = (ImageView) customActionBar.findViewById(R.id.ac_action1);
+        history = (ImageView) customActionBar.findViewById(R.id.ac_action2);
+
+        user.setImageResource(R.drawable.ic_user);
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
+        history.setImageResource(R.drawable.ic_history);
+        context = this;
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
     }
 }
 
