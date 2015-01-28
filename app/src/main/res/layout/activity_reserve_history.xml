@@ -61,6 +61,121 @@
 
 
 
+<HorizontalScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+>
+
+    <LinearLayout
+        android:layout_width="600dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="">
+
+
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="right"
+        android:background="#ff336892">
+
+        <TextView
+            android:layout_width="45dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/cell_frame"
+            android:text="تحویل"
+            android:paddingLeft="3dp"
+
+            android:textColor="#ffffffff"
+            />
+
+
+
+        <TextView
+            android:id="@+id/foods"
+            android:layout_width="@dimen/cell_width"
+            android:layout_height="fill_parent"
+            android:layout_weight=".8642"
+            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="غذا"
+            android:textColor="#ffffffff"
+
+            android:background="@drawable/cell_frame"/>
+
+        <TextView
+            android:id="@+id/paymenttype"
+            android:layout_width="@dimen/cell_width"
+            android:layout_height="fill_parent"
+            android:layout_weight=".8642"
+            android:gravity="center"
+            android:text="نوع محاسبه"
+            android:textColor="#ffffffff"
+
+            android:background="@drawable/cell_frame"/>
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="تاریخ"
+            android:textColor="#ffffffff"
+            android:background="@drawable/cell_frame"/>
+
+
+        <TextView
+            android:id="@+id/meal"
+            android:layout_width="@dimen/cell_width"
+            android:layout_height="fill_parent"
+            android:layout_weight=".8642"
+            android:gravity="center"
+            android:text="وعده"
+            android:textColor="#ffffffff"
+
+            android:background="@drawable/cell_frame"/>
+
+        <TextView
+            android:id="@+id/planning"
+            android:layout_width="@dimen/cell_width"
+            android:layout_height="fill_parent"
+            android:layout_weight=".8642"
+            android:gravity="center"
+            android:text="برنامه ریزی"
+            android:textColor="#ffffffff"
+
+            android:background="@drawable/cell_frame"/>
+
+        <TextView
+            android:id="@+id/restaurant"
+            android:layout_width="@dimen/cell_width"
+            android:layout_height="fill_parent"
+            android:layout_weight=".8642"
+            android:gravity="center"
+            android:text="نام رستوران"
+            android:textColor="#ffffffff"
+
+            android:background="@drawable/cell_frame"/>
+
+        <TextView
+            android:id="@+id/radif"
+            android:layout_width="40dp"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="ردیف"
+            android:paddingRight="3dp"
+            android:textColor="#ffffffff"
+
+            android:background="@drawable/cell_frame"/>
+
+    </LinearLayout>
 
 
 
@@ -73,133 +188,24 @@
 
 
 
-                <LinearLayout
-                    android:orientation="horizontal" android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="right"
-                    android:background="#ff336892">
-
-                    <TextView
-                        android:layout_width="45dp"
-                        android:layout_height="fill_parent"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:background="@drawable/cell_frame"
-                        android:text="تحویل"
-                        android:paddingLeft="3dp"
-
-                        android:textColor="#ffffffff"
-                        />
-
-
-
-                    <TextView
-                        android:id="@+id/foods"
-                        android:layout_width="@dimen/cell_width"
-                        android:layout_height="fill_parent"
-                        android:layout_weight=".8642"
-                        android:gravity="center"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp"
-                        android:text="غذا"
-                        android:textColor="#ffffffff"
-
-                        android:background="@drawable/cell_frame"/>
-
-                    <TextView
-                        android:id="@+id/paymenttype"
-                        android:layout_width="@dimen/cell_width"
-                        android:layout_height="fill_parent"
-                        android:layout_weight=".8642"
-                        android:gravity="center"
-                        android:text="نوع محاسبه"
-                        android:textColor="#ffffffff"
-
-                        android:background="@drawable/cell_frame"/>
-
-                    <TextView
-                        android:id="@+id/date"
-                        android:layout_width="100dp"
-                        android:layout_height="fill_parent"
-                        android:gravity="center"
-                        android:text="تاریخ"
-                        android:textColor="#ffffffff"
-                        android:background="@drawable/cell_frame"/>
-
-
-                    <TextView
-                        android:id="@+id/meal"
-                        android:layout_width="@dimen/cell_width"
-                        android:layout_height="fill_parent"
-                        android:layout_weight=".8642"
-                        android:gravity="center"
-                        android:text="وعده"
-                        android:textColor="#ffffffff"
-
-                        android:background="@drawable/cell_frame"/>
-
-                    <TextView
-                        android:id="@+id/planning"
-                        android:layout_width="@dimen/cell_width"
-                        android:layout_height="fill_parent"
-                        android:layout_weight=".8642"
-                        android:gravity="center"
-                        android:text="برنامه ریزی"
-                        android:textColor="#ffffffff"
-
-                        android:background="@drawable/cell_frame"/>
-
-                    <TextView
-                        android:id="@+id/restaurant"
-                        android:layout_width="@dimen/cell_width"
-                        android:layout_height="fill_parent"
-                        android:layout_weight=".8642"
-                        android:gravity="center"
-                        android:text="نام رستوران"
-                        android:textColor="#ffffffff"
-
-                        android:background="@drawable/cell_frame"/>
-
-                    <TextView
-                        android:id="@+id/radif"
-                        android:layout_width="40dp"
-                        android:layout_height="fill_parent"
-                        android:gravity="center"
-                        android:text="ردیف"
-                        android:paddingRight="3dp"
-                        android:textColor="#ffffffff"
-
-                        android:background="@drawable/cell_frame"/>
-
-                </LinearLayout>
 
 
 
 
 
+    <ListView
+
+        android:id="@+id/HistoryListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/linearLayout"
+        android:layout_above="@+id/btn_send_reserve"
+        />
+
+    </LinearLayout>
+    </HorizontalScrollView>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <ListView
-
-                    android:id="@+id/HistoryListView"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_below="@+id/linearLayout"
-                    android:layout_above="@+id/btn_send_reserve"
-                    />
 
             </LinearLayout>
 
@@ -212,7 +218,7 @@
 
         <LinearLayout
             android:id="@+id/monthll"
-            android:layout_width="140dp"
+            android:layout_width="100dp"
             android:layout_height="fill_parent"
             android:visibility="gone"
             android:background="#fff4f1ef"
@@ -225,8 +231,8 @@
                 android:layout_gravity="center"
                 android:background="@drawable/date_picker_title_background"
                 android:gravity="center"
-                android:text="انتخاب ماه"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="ماه"
+                android:textAppearance="?android:attr/textAppearanceSmall"
 
                 android:textColor="#fff" />
 
@@ -241,8 +247,15 @@
 
         </LinearLayout>
 
+
+
+
+
+
+
+
         <LinearLayout
-            android:layout_width="130dp"
+            android:layout_width="80dp"
             android:layout_height="fill_parent"
             android:background="#ffeae7e5"
 
@@ -255,8 +268,8 @@
                 android:layout_gravity="center"
                 android:background="@drawable/date_picker_title_background"
                 android:gravity="center"
-                android:text="انتخاب سال"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="سال"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#fff" />
 
             <ListView

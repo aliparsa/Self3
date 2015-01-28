@@ -1,7 +1,10 @@
 package com.example.parsa.self3;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -152,6 +155,26 @@ public class SelectDateActivity extends ActionBarActivity {
             public void onClick(View view) {
 
 
+
+
+                new AlertDialog.Builder(context)
+                        .setTitle("اطلاعات پرسنل")
+                        //.setView(personnel.getView(context,null))
+                        .setMessage(
+                                "نام کاربر"+" : "+personnel.getName() + " "+personnel.getFamily()+"\n\n"+
+                                "اعتبار فعلی"+" : "+personnel.getFinalCridit()
+                        )
+                        .setNegativeButton("تایید", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+
+                        .show();
+
+
+
             }
         });
 
@@ -160,7 +183,9 @@ public class SelectDateActivity extends ActionBarActivity {
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+            Intent intent = new Intent(context, ReserveHistoryActivity.class);
+                intent.putExtra("personnel",personnel);
+                startActivity(intent);
 
             }
         });

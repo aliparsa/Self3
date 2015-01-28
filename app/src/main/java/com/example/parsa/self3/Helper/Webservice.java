@@ -209,7 +209,7 @@ public class Webservice {
             e.printStackTrace();
         }
     }
-//    //-----------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------
     public static void GetReserves(Context context,final String date, final String uid, final CallBack<ArrayList<Reserve>> callback) {
 
         try {
@@ -308,8 +308,8 @@ public class Webservice {
             e.printStackTrace();
         }
     }
-//----------------------------------------------------------------------------------
-public static void CancelReserve(Context context,String reserveId, final CallBack<String> callback) {
+    //----------------------------------------------------------------------------------
+    public static void CancelReserve(Context context,String reserveId, final CallBack<String> callback) {
 
     try {
         SettingHelper setting = new SettingHelper(context);
@@ -435,7 +435,6 @@ public static void CancelReserve(Context context,String reserveId, final CallBac
             e.printStackTrace();
         }
 }
-
     //------------------------------------------------------------------------------------------
     public static void printRequest(Context context,String reserveIdes , final CallBack<String> callback) {
 
@@ -496,9 +495,8 @@ public static void CancelReserve(Context context,String reserveId, final CallBac
             e.printStackTrace();
         }
     }
-
-//-----------------------------------------------------------------------------------------------------
-public static void GetHistory(Context context,final String date, final String uid, final CallBack<ArrayList<ReserveHistory>> callback) {
+    //-----------------------------------------------------------------------------------------------------
+    public static void GetHistory(Context context,final String date, final String uid, final CallBack<ArrayList<ReserveHistory>> callback) {
 
     try {
         SettingHelper setting = new SettingHelper(context);
@@ -585,4 +583,75 @@ public static void GetHistory(Context context,final String date, final String ui
     }
 }
 //----------------------------------------------------------------------------------
+public static void GetPersonnelInfo(Context context,final String uid, final CallBack<Personnel> callback) {
+
+    try {
+        SettingHelper setting = new SettingHelper(context);
+        String SERVER_ADDRESS = setting.getOption("serverAddress");
+
+        final String NAMESPACE = SERVER_ADDRESS+"/Areas/Buffet/Service/";
+        final String METHOD_NAME = "Self3_PersonelInfo";
+        final String URL = SERVER_ADDRESS+"/areas/buffet/service/webserviceAndroid.asmx?op=Self3_PersonelInfo";
+        final String SOAP_ACTION =SERVER_ADDRESS+ "/Areas/Buffet/Service/Self3_PersonelInfo";
+
+        SoapHelper soapHelper = new SoapHelper(context,NAMESPACE, METHOD_NAME, URL, SOAP_ACTION);
+
+        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> values = new ArrayList<String>();
+
+        names.add("uid");
+        values.add(uid);
+
+
+
+        soapHelper.SendRequestToServer(names,values, new CallBack<JSONObject>() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                try {
+
+                    int resultCode  = result.getInt("ResultCode");
+
+                    if(resultCode != RESULT_OK){
+
+                        result = new JSONObject("");
+                    }
+
+                    switch (resultCode) {
+                        case RESULT_OK: {
+
+                            String uid = result.getString("uid");
+                            int id = result.getInt("PersonelId");
+                            String firstName = result.getString("FName");
+                            String lastName = result.getString("LName");
+                            double finalCredit = result.getDouble("finalcredit");
+                            String code = result.getString("Code");
+                            callback.onSuccess(new Personnel(uid,id,firstName,lastName,code,finalCredit));
+
+                            break;
+                        }
+                        case RESULT_ERROR: {
+                            callback.onError(result.getString("ErrorMessage"));
+                            break;
+                        }
+                        default: {
+                            callback.onError("server response is not valid ");
+                            break;
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+    //-----------------------------------------------------------------------------
 }
