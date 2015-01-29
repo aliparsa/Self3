@@ -37,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
     public DateItem dateItem;
     private ImageView shopping;
     private ArrayList<MenuFood> selectedFoods;
+    private TextView title;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +48,9 @@ public class MainActivity extends ActionBarActivity {
         actionBar=getSupportActionBar();
 
 
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         dateItem = (DateItem) getIntent().getSerializableExtra("dateItem");
         personnel = (Personnel) getIntent().getSerializableExtra("personnel");
-
 
         // Create a tab listener that is called when the user changes tabs.
         ActionBar.TabListener tabListener = new ActionBar.TabListener() {
@@ -156,9 +155,8 @@ public class MainActivity extends ActionBarActivity {
 
         mViewPager.setCurrentItem(1);
 
-
-
         prepareActionBar();
+
     }
 
     private void prepareActionBar() {
@@ -188,10 +186,11 @@ public class MainActivity extends ActionBarActivity {
         }
 
 
-        TextView title = (TextView) customActionBar.findViewById(R.id.ac_title);
+        title = (TextView) customActionBar.findViewById(R.id.ac_title);
+
         FontHelper.SetFontBold(this, FontHelper.Fonts.MAIN_FONT, title);
 
-        title.setText("انتخاب تاریخ");
+        title.setText(dateItem.getDate().getPersianWeekDayStr() + " " + dateItem.getDate().getIranianDate());
         //ImageView back = (ImageView) customActionBar.findViewById(R.id.ac_back);
         LinearLayout back = (LinearLayout) customActionBar.findViewById(R.id.ac_back_layout);
 
