@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.parsa.self3.DataModel.GlobalData;
 import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.Helper.FontHelper;
 import com.example.parsa.self3.Helper.SettingHelper;
@@ -22,7 +23,6 @@ public class PersonnelInfoActivity extends ActionBarActivity {
     TextView personnel_name;
     TextView personnel_national_code;
     TextView personnel_balance;
-    Personnel personnel;
     private TextView title;
     private TextView logout;
     private Context context;
@@ -34,7 +34,6 @@ public class PersonnelInfoActivity extends ActionBarActivity {
 
         context=this;
 
-        personnel = (Personnel) getIntent().getSerializableExtra("personnel");
 
         // init
         personnel_name = (TextView) findViewById(R.id.txt_personnel_name);
@@ -42,9 +41,9 @@ public class PersonnelInfoActivity extends ActionBarActivity {
         personnel_balance = (TextView) findViewById(R.id.txt_personnel_balance);
 
 
-        personnel_name.setText(personnel.getName()+ " "+ personnel.getFamily());
-        personnel_national_code.setText(personnel.getNationalNo()+"");
-        personnel_balance.setText(personnel.getFinalCridit()+"");
+        personnel_name.setText(GlobalData.getPersonnel().getName()+ " "+ GlobalData.getPersonnel().getFamily());
+        personnel_national_code.setText((GlobalData.getPersonnel().getNationalNo() == null || GlobalData.getPersonnel().getNationalNo().equals("null")) ? "":GlobalData.getPersonnel().getNationalNo());
+        personnel_balance.setText(GlobalData.getPersonnel().getFinalCridit()+"");
 
 
         prepareActionBar();
@@ -104,6 +103,7 @@ public class PersonnelInfoActivity extends ActionBarActivity {
                 settingHelper.removeOption("uid");
                 Intent intent = new Intent(context,LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

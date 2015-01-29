@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.parsa.self3.Adapter.ListViewObjectAdapter;
 import com.example.parsa.self3.DataModel.DateItem;
+import com.example.parsa.self3.DataModel.GlobalData;
 import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.Helper.DateHelper;
 import com.example.parsa.self3.Helper.FontHelper;
@@ -34,7 +35,6 @@ public class SelectDateActivity extends ActionBarActivity {
     private Context context;
     ListViewObjectAdapter dateAdapter;
     ListView datelv;
-    Personnel personnel;
     private ImageView user;
     private ImageView history;
 
@@ -44,14 +44,13 @@ public class SelectDateActivity extends ActionBarActivity {
         setContentView(R.layout.activity_date_picker);
         context=this;
 
-        personnel = (Personnel) getIntent().getSerializableExtra("personnel");
 
 
 
         // init
         datelv = (ListView) findViewById(R.id.dateListview);
 
-        Toast.makeText(context,personnel.getName()+" " + personnel.getFamily(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, GlobalData.getPersonnel().getName()+" " + GlobalData.getPersonnel().getFamily(),Toast.LENGTH_SHORT).show();
 
         fillDateListView();
     }
@@ -73,10 +72,7 @@ public class SelectDateActivity extends ActionBarActivity {
 //                lastSelectedDayIndex = i;
                 DateItem item = ((DateItem.Holder) view.getTag()).getDateItem();
                 Intent intent = new Intent(context,MainActivity.class);
-
                 intent.putExtra("dateItem",item);
-                intent.putExtra("personnel",personnel);
-                
                 startActivity(intent);
 
             }
@@ -136,7 +132,6 @@ public class SelectDateActivity extends ActionBarActivity {
             public void onClick(View view) {
 
                 Intent intent = new Intent(context,PersonnelInfoActivity.class);
-                intent.putExtra("personnel",personnel);
                 startActivity(intent);
 
 
@@ -169,7 +164,6 @@ public class SelectDateActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
             Intent intent = new Intent(context, ReserveHistoryActivity.class);
-                intent.putExtra("personnel",personnel);
                 startActivity(intent);
 
             }

@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.parsa.self3.Adapter.ListViewObjectAdapter;
 import com.example.parsa.self3.DataModel.AddReserveResponse;
 import com.example.parsa.self3.DataModel.Basket;
+import com.example.parsa.self3.DataModel.GlobalData;
 import com.example.parsa.self3.DataModel.MenuFood;
 import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.DataModel.Shopping;
@@ -37,7 +38,6 @@ public class BasketActivity extends ActionBarActivity {
     Context context;
     private LinearLayout payment;
     private TextView price;
-    private Personnel personnel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,6 @@ public class BasketActivity extends ActionBarActivity {
 
         context = this;
 
-        personnel = (Personnel) getIntent().getSerializableExtra("personnel");
 
         prepareActionBar();
 
@@ -139,9 +138,13 @@ public class BasketActivity extends ActionBarActivity {
                     final ProgressDialog progDialog = ProgressDialog.show(context, "تبادل داده با سرور", "کمی صبر کنید", true);
                     progDialog.show();
                     String json = MenuFood.getJsonFromArrayList(selectedFoods);
-                    Webservice.AddReserve(context, json, personnel.getUid(), new CallBack<AddReserveResponse>() {
+
+
+                    Webservice.AddReserve(context, json, GlobalData.getPersonnel().getUid(), new CallBack<AddReserveResponse>() {
                         @Override
                         public void onSuccess(AddReserveResponse result) {
+
+                            GlobalData.getPersonnel().setFinalCridit(Double.parseDouble(result.getFinalCredit()));
                             progDialog.dismiss();
                             Toast.makeText(context, " رزرو با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
                             Shopping.selectedFoods.clear();

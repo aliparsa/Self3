@@ -111,7 +111,7 @@ public class Reserve implements IListViewItem {
 
             Food food = foods.get(i);
 
-            foodStr += food.getCaption() + "  " + food.getCount() + " عدد\n\n";
+            foodStr += food.getCaption() + "        " + food.getCount() + " عدد\n\n";
         }
 
         holder.food.setText(foodStr);

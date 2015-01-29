@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.parsa.self3.DataModel.GlobalData;
 import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.Helper.FontHelper;
 import com.example.parsa.self3.Helper.SettingHelper;
@@ -82,8 +83,8 @@ public class LoginActivity extends Activity {
                 public void onSuccess(Personnel result) {
                  //   dialog.dismiss();
 
+                    GlobalData.setPersonnel(result);
                     Intent intent = new Intent(context,SelectDateActivity.class);
-                    intent.putExtra("personnel",result);
                     startActivity(intent);
                     finish();
                 }
@@ -130,7 +131,7 @@ public class LoginActivity extends Activity {
                 settingHelper.setOption("uid",result.getUid());
 
                 Intent intent = new Intent(context,SelectDateActivity.class);
-                intent.putExtra("personnel",result);
+                GlobalData.setPersonnel(result);
                 startActivity(intent);
                 finish();
 
