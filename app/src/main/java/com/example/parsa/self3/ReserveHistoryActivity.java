@@ -3,6 +3,7 @@ package com.example.parsa.self3;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -44,6 +45,8 @@ public class ReserveHistoryActivity extends ActionBarActivity {
 
     Personnel personnel;
     private TextView title;
+    private ImageView reload;
+    private PersianCalendar selectedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +112,53 @@ public class ReserveHistoryActivity extends ActionBarActivity {
         });
 
 
+        reload = (ImageView) customActionBar.findViewById(R.id.ac_action1);
+
+        reload.setImageResource(R.drawable.ac_refresh);
+        reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            if (selectedDate!=null){
+
+
+                final ProgressDialog progDialog = ProgressDialog.show(context, "تبادل داده با سرور", "کمی صبر کنید", true);
+                progDialog.show();
+                Webservice.GetHistory(context,true, selectedDate.getGregorianDate(), personnel.getUid(), new CallBack<ArrayList<ReserveHistory>>() {
+                    @Override
+                    public void onSuccess(ArrayList<ReserveHistory> result) {
+                        progDialog.dismiss();
+
+                        title.setText(" سابقه رزرو " + selectedDate.getPersianMonthNameStr() + " ماه سال " + selectedDate.getIranianYear());
+
+                        if (result.size() < 1) {
+                            title.setText(" سابقه رزرو ");
+
+                            ArrayList<NoItem> noItems = new ArrayList<NoItem>();
+                            noItems.add(new NoItem());
+                            ListViewObjectAdapter adapter = new ListViewObjectAdapter(context, noItems);
+                            reserveHistotyListview.setAdapter(adapter);
+                            //   Animation animation = AnimationUtils.loadAnimation(context, R.anim.view_not_valid);
+                            //  reserveHistotyListview.startAnimation(animation);
+                            return;
+                        }
+
+
+                        ListViewObjectAdapter adapter1 = new ListViewObjectAdapter(context, result);
+                        reserveHistotyListview.setAdapter(adapter1);
+
+                    }
+
+                    @Override
+                    public void onError(String errorMessage) {
+                        progDialog.dismiss();
+                    }
+                });
+
+            }
+
+            }
+        });
 
 
     }
@@ -150,10 +200,11 @@ public class ReserveHistoryActivity extends ActionBarActivity {
                 monthll.setVisibility(View.GONE);
                 final PersianCalendar persianCalendar = ((YearMonthItem.Holder) view.getTag()).getYearmonthitem().getDate();
 
+                selectedDate=persianCalendar;
                 final ProgressDialog progDialog = ProgressDialog.show(context, "تبادل داده با سرور", "کمی صبر کنید", true);
                 progDialog.show();
 
-                Webservice.GetHistory(context, persianCalendar.getGregorianDate(), personnel.getUid(), new CallBack<ArrayList<ReserveHistory>>() {
+                Webservice.GetHistory(context,false, persianCalendar.getGregorianDate(), personnel.getUid(), new CallBack<ArrayList<ReserveHistory>>() {
                     @Override
                     public void onSuccess(ArrayList<ReserveHistory> result) {
                         progDialog.dismiss();

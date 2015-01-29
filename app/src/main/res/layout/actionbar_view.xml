@@ -45,21 +45,21 @@
 
     <ImageView
     android:id="@+id/ac_action1"
-    android:layout_width="60dp"
+    android:layout_width="45dp"
     android:layout_height="fill_parent"
     android:layout_alignParentLeft="true"
         android:background="@drawable/hit"
-        android:padding="3dp"
+        android:padding="7dp"
     />
 
     <ImageView
         android:id="@+id/ac_action2"
-        android:layout_width="60dp"
+        android:layout_width="45dp"
         android:layout_height="fill_parent"
         android:layout_toRightOf="@+id/ac_action1"
         android:background="@drawable/hit"
 
-        android:padding="3dp"
+        android:padding="7dp"
         />
 
 

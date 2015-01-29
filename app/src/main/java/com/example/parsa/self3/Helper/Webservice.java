@@ -1,6 +1,7 @@
 package com.example.parsa.self3.Helper;
 
 import android.content.Context;
+import android.widget.Toast;
 
 
 import com.example.parsa.self3.DataModel.AddReserveResponse;
@@ -496,11 +497,39 @@ public class Webservice {
         }
     }
     //----------------------------------------------------------------------------------------------
-    public static void GetHistory(Context context,final String date, final String uid, final CallBack<ArrayList<ReserveHistory>> callback) {
+    public static void GetHistory(final Context context,boolean forceOnline,final String date, final String uid, final CallBack<ArrayList<ReserveHistory>> callback) {
 
     try {
-        SettingHelper setting = new SettingHelper(context);
-        String SERVER_ADDRESS = setting.getOption("serverAddress");
+
+
+
+        // che if data available offline load it form disk
+        if(forceOnline==false){
+            if (new SettingHelper(context).getOption("reserveHistory"+date)!=null){
+
+                ArrayList<ReserveHistory> reserveHistories = new ArrayList<ReserveHistory>();
+                JSONArray result = new JSONArray(new SettingHelper(context).getOption("reserveHistory"+date));
+
+                for (int i = 0;i<result.length();i++) {
+                    JSONObject object = result.getJSONObject(i);
+                    String restaurant= object.getString("Restaurant");
+                    String planning= object.getString("Planning");
+                    String meal= object.getString("Meal");
+                    String date1= object.getString("Date");
+                    String paymentType= object.getString("PaymentType");
+                    String foods= object.getString("Foods");
+                    String deliveryStatus= object.getString("DeliveryStatus");
+                    ReserveHistory reserveHistory = new ReserveHistory(i+1,restaurant,planning,meal,date1,paymentType,foods,deliveryStatus);
+                    reserveHistories.add(reserveHistory);
+                }
+                callback.onSuccess(reserveHistories);
+                //Toast.makeText(context,"Load From Disk",Toast.LENGTH_SHORT).show();
+                return;
+
+            }
+        }
+
+        String SERVER_ADDRESS = new SettingHelper(context).getOption("serverAddress");
         if (SERVER_ADDRESS==null)
             SERVER_ADDRESS="http://192.168.0.11:6061";
 
@@ -532,9 +561,15 @@ public class Webservice {
                     switch (resultCode) {
                         case RESULT_OK: {
 
+
+
                             ArrayList<ReserveHistory> reserveHistories = new ArrayList<ReserveHistory>();
 
                             JSONArray result = res.getJSONArray("Reserves");
+
+
+                            // store to disk
+                            new SettingHelper(context).setOption("reserveHistory"+date,result.toString());
 
                             for (int i = 0;i<result.length();i++) {
 

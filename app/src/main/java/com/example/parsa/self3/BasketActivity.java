@@ -55,7 +55,7 @@ public class BasketActivity extends ActionBarActivity {
 
         lvBasket.setAdapter(adapter);
 
-        price.setText(StringHelper.commaSeparator(Shopping.getBasketPrice()+"") + " ریال");
+        price.setText(StringHelper.commaSeparator(Shopping.getBasketPrice() + "") + " ریال");
 
         lvBasket.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -80,7 +80,7 @@ public class BasketActivity extends ActionBarActivity {
 
         View customActionBar = getLayoutInflater().inflate(R.layout.actionbar_basket_view, null);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_TABS);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setCustomView(customActionBar);
 
         actionBar.setLogo(null); // forgot why this one but it helped
