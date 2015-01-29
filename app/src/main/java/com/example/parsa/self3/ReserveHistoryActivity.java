@@ -19,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.parsa.self3.Adapter.ListViewObjectAdapter;
+import com.example.parsa.self3.DataModel.GlobalData;
 import com.example.parsa.self3.DataModel.NoItem;
 import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.DataModel.ReserveHistory;
@@ -43,7 +44,6 @@ public class ReserveHistoryActivity extends ActionBarActivity {
     private ImageView back;
 
 
-    Personnel personnel;
     private TextView title;
     private ImageView reload;
     private PersianCalendar selectedDate;
@@ -55,7 +55,6 @@ public class ReserveHistoryActivity extends ActionBarActivity {
         context= this;
 
 
-        personnel= (Personnel) getIntent().getSerializableExtra("personnel");
 
         // init
         yearListview = (ListView) findViewById(R.id.sallistView);
@@ -124,7 +123,7 @@ public class ReserveHistoryActivity extends ActionBarActivity {
 
                 final ProgressDialog progDialog = ProgressDialog.show(context, "تبادل داده با سرور", "کمی صبر کنید", true);
                 progDialog.show();
-                Webservice.GetHistory(context,true, selectedDate.getGregorianDate(), personnel.getUid(), new CallBack<ArrayList<ReserveHistory>>() {
+                Webservice.GetHistory(context,true, selectedDate.getGregorianDate(), GlobalData.getPersonnel().getUid(), new CallBack<ArrayList<ReserveHistory>>() {
                     @Override
                     public void onSuccess(ArrayList<ReserveHistory> result) {
                         progDialog.dismiss();
@@ -204,7 +203,7 @@ public class ReserveHistoryActivity extends ActionBarActivity {
                 final ProgressDialog progDialog = ProgressDialog.show(context, "تبادل داده با سرور", "کمی صبر کنید", true);
                 progDialog.show();
 
-                Webservice.GetHistory(context,false, persianCalendar.getGregorianDate(), personnel.getUid(), new CallBack<ArrayList<ReserveHistory>>() {
+                Webservice.GetHistory(context,false, persianCalendar.getGregorianDate(), GlobalData.getPersonnel().getUid(), new CallBack<ArrayList<ReserveHistory>>() {
                     @Override
                     public void onSuccess(ArrayList<ReserveHistory> result) {
                         progDialog.dismiss();

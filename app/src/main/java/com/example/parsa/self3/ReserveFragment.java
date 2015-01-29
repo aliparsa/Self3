@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.parsa.self3.Adapter.ListViewObjectAdapter;
+import com.example.parsa.self3.DataModel.GlobalData;
 import com.example.parsa.self3.DataModel.LoadingItem;
 import com.example.parsa.self3.DataModel.NoItem;
 import com.example.parsa.self3.DataModel.Reserve;
@@ -80,7 +81,8 @@ public  class ReserveFragment extends Fragment {
                                             progDialog.dismiss();
                                             Toast.makeText(getActivity(), "لغو رزرو با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
 
-                                            // setCredit(result);
+                                            GlobalData.getPersonnel().setFinalCridit(Double.parseDouble(result));
+
 
                                             if (reserveLV != null && reserveLV.getAdapter() instanceof ListViewObjectAdapter) {
 
@@ -118,7 +120,7 @@ public  class ReserveFragment extends Fragment {
         super.onStart();
 
 
-        Webservice.GetReserves(getActivity(),mainActivity.dateItem.getDate().getGregorianDate(),mainActivity.personnel.getUid(),new CallBack<ArrayList<Reserve>>() {
+        Webservice.GetReserves(getActivity(),mainActivity.dateItem.getDate().getGregorianDate(), GlobalData.getPersonnel().getUid(),new CallBack<ArrayList<Reserve>>() {
             @Override
             public void onSuccess(ArrayList<Reserve> result) {
 

@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.parsa.self3.Adapter.ListViewObjectAdapter;
+import com.example.parsa.self3.DataModel.GlobalData;
 import com.example.parsa.self3.DataModel.LoadingItem;
 import com.example.parsa.self3.DataModel.MenuFood;
 import com.example.parsa.self3.DataModel.NoItem;
@@ -89,7 +90,7 @@ public  class MenuFoodFragment extends Fragment {
         super.onStart();
 
 
-        Webservice.GetMenuFoods(getActivity(), mainActivity.dateItem.getDate().getGregorianDate(), mainActivity.personnel.getUid(), new CallBack<ArrayList<MenuFood>>() {
+        Webservice.GetMenuFoods(getActivity(), mainActivity.dateItem.getDate().getGregorianDate(), GlobalData.getPersonnel().getUid(), new CallBack<ArrayList<MenuFood>>() {
             @Override
             public void onSuccess(ArrayList<MenuFood> result) {
 

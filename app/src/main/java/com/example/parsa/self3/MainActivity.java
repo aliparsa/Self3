@@ -33,7 +33,6 @@ public class MainActivity extends ActionBarActivity {
     ActionBar actionBar;
     private ImageView user;
     private Context context;
-    public Personnel personnel;
     public DateItem dateItem;
     private ImageView shopping;
     private ArrayList<MenuFood> selectedFoods;
@@ -50,7 +49,6 @@ public class MainActivity extends ActionBarActivity {
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         dateItem = (DateItem) getIntent().getSerializableExtra("dateItem");
-        personnel = (Personnel) getIntent().getSerializableExtra("personnel");
 
 
         // Create a tab listener that is called when the user changes tabs.
@@ -213,7 +211,6 @@ public class MainActivity extends ActionBarActivity {
 
 
                 Intent intent = new Intent(context,PersonnelInfoActivity.class);
-                intent.putExtra("personnel",personnel);
                 startActivity(intent);
 
             }
@@ -231,7 +228,6 @@ public class MainActivity extends ActionBarActivity {
 
                 mViewPager.setCurrentItem(0);
                 Intent intent = new Intent(context,BasketActivity.class);
-                intent.putExtra("personnel",personnel);
                 intent.putExtra("dateItem",dateItem);
                 startActivity(intent);
 
