@@ -191,7 +191,7 @@ public class MainActivity extends ActionBarActivity {
         TextView title = (TextView) customActionBar.findViewById(R.id.ac_title);
         FontHelper.SetFontBold(this, FontHelper.Fonts.MAIN_FONT, title);
 
-        title.setText("مدیریت سریع");
+        title.setText("انتخاب تاریخ");
         //ImageView back = (ImageView) customActionBar.findViewById(R.id.ac_back);
         LinearLayout back = (LinearLayout) customActionBar.findViewById(R.id.ac_back_layout);
 
@@ -211,6 +211,10 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
+
+                Intent intent = new Intent(context,PersonnelInfoActivity.class);
+                intent.putExtra("personnel",personnel);
+                startActivity(intent);
 
             }
         });

@@ -8,5 +8,6 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_reserve_history">ReserveHistory</string>
     <string name="title_activity_basket">BasketActivity</string>
+    <string name="title_activity_personnel_info">PersonnelInfoActivity</string>
 
 </resources>
