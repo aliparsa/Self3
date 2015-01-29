@@ -43,33 +43,13 @@
 
 
 
-    <LinearLayout
-        android:id="@+id/ac_action1"
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:background="@drawable/hit"
-        >
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="fill_parent"
-            android:layout_alignParentLeft="true"
-            android:padding="3dp"
-            android:src="@drawable/ic_pay"
-            />
-
-        <TextView
-            android:id="@+id/txt_price"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_toRightOf="@+id/ac_action1"
-            android:padding="3dp"
-            android:gravity="center"
-            />
-
-        </LinearLayout>
-
-
-
+        android:layout_height="fill_parent"
+        android:layout_margin="3dp"
+        android:text="خروج کاربر"
+        android:background="@drawable/logout_button"
+        android:textColor="#d0ff2528"
+        />
 
 </RelativeLayout>
