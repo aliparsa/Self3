@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.parsa.self3.Helper.FontHelper;
+import com.example.parsa.self3.Helper.StringHelper;
 import com.example.parsa.self3.Interface.IListViewItem;
 import com.example.parsa.self3.R;
 
@@ -24,10 +25,11 @@ public class ReserveHistory implements IListViewItem {
         String date;
         String paymentType;
         String foods;
+        String totalPrice;
         String deliveryStatus;
 
 
-    public ReserveHistory(int id,String restaurant, String planning, String meal, String date, String paymentType, String foods, String deliveryStatus) {
+    public ReserveHistory(int id,String restaurant, String planning, String meal, String date, String paymentType, String foods, String totalPrice, String deliveryStatus) {
         this.id = id;
         this.restaurant = restaurant;
         this.planning = planning;
@@ -35,6 +37,7 @@ public class ReserveHistory implements IListViewItem {
         this.date = date;
         this.paymentType = paymentType;
         this.foods = foods;
+        this.totalPrice = totalPrice;
         this.deliveryStatus = deliveryStatus;
     }
 
@@ -82,6 +85,9 @@ public class ReserveHistory implements IListViewItem {
         if (holder.foods == null)
             holder.foods = (TextView) view.findViewById(R.id.foods);
 
+        if (holder.totalPrice == null)
+            holder.totalPrice = (TextView) view.findViewById(R.id.total_price);
+
         if (holder.deliverystatus == null)
             holder.deliverystatus = (ImageView) view.findViewById(R.id.deliverystatus);
 
@@ -93,6 +99,7 @@ public class ReserveHistory implements IListViewItem {
         holder.date.setText(this.getDate());
         holder.paymenttype.setText(this.getPaymentType());
         holder.foods.setText(this.getFoods());
+        holder.totalPrice.setText(StringHelper.commaSeparator(this.getTotalPrice()) + " ريال");
        // holder.deliverystatus.setText(this.getDeliveryStatus());
 
 
@@ -112,6 +119,7 @@ public class ReserveHistory implements IListViewItem {
         TextView date;
         TextView paymenttype;
         TextView foods;
+        TextView totalPrice;
         ImageView deliverystatus;
         ReserveHistory reservehistory;
 
@@ -185,5 +193,14 @@ public class ReserveHistory implements IListViewItem {
 
     public void setDeliveryStatus(String deliveryStatus) {
         this.deliveryStatus = deliveryStatus;
+    }
+
+
+    public String getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

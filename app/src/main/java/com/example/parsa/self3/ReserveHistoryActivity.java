@@ -100,7 +100,7 @@ public class ReserveHistoryActivity extends ActionBarActivity {
         title = (TextView) customActionBar.findViewById(R.id.ac_title);
         FontHelper.SetFontBold(this, FontHelper.Fonts.MAIN_FONT, title);
 
-        title.setText("مدیریت سریع");
+        title.setText("تاریخچه رزرو");
         //ImageView back = (ImageView) customActionBar.findViewById(R.id.ac_back);
         LinearLayout back = (LinearLayout) customActionBar.findViewById(R.id.ac_back_layout);
 
