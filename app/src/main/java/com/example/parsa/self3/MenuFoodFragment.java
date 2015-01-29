@@ -56,11 +56,15 @@ public  class MenuFoodFragment extends Fragment {
 
                 MenuFood food = ((MenuFood.Holder) view.getTag()).menufood;
 
-                ((MainActivity) context).addNewFood(food);
+                if(Shopping.menuFoodCanBeReserved(food)) {
+                    ((MainActivity) context).addNewFood(food);
 
-                Shopping.selectedFoods.add(food);
+                    Shopping.selectedFoods.add(food);
+                    Toast.makeText(context, food.getFoodCaption() + " به سبد خرید افزوده شد! ", Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(context, food.getFoodCaption() + " به سبد خرید افزوده شد! ", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(context, "حداکثر تعداد این غذا به سبد افزوده شده", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
