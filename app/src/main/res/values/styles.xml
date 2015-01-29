@@ -12,6 +12,7 @@
     <style name="MyActionBar" parent="style/Widget.AppCompat.Light.ActionBar">
         <item name="android:background">#002d5c</item>
         <item name="android:textColor">#00ff00</item>
+        <item name="android:height">60dp</item>
     </style>
 
     <style name="CustomActivityThemeNoActionBar" parent="style/Theme.AppCompat.Light">
