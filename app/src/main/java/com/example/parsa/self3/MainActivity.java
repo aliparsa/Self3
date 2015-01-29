@@ -46,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
 
         actionBar=getSupportActionBar();
 
-
+        actionBar.setNavigationMode(android.support.v7.app.ActionBar.NAVIGATION_MODE_TABS);
 
         dateItem = (DateItem) getIntent().getSerializableExtra("dateItem");
 
