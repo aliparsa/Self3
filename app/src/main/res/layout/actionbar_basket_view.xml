@@ -47,14 +47,17 @@
         android:id="@+id/ac_action1"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:background="@drawable/hit"
+        android:background="@drawable/reserve_button"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="3dp"
         >
 
         <ImageView
-            android:layout_width="60dp"
+            android:layout_width="35dp"
             android:layout_height="fill_parent"
             android:layout_alignParentLeft="true"
-            android:padding="3dp"
             android:src="@drawable/ic_pay"
             />
 
@@ -63,9 +66,13 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_toRightOf="@+id/ac_action1"
-            android:padding="3dp"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:textColor="#fff"
+            android:textSize="25sp"
+            android:layout_margin="2dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="5dp"
+
             />
 
         </LinearLayout>

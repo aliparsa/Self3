@@ -3,10 +3,10 @@
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_active="true">
+    <item>
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-            <solid android:color="#ff18df47"/>
+            <solid android:color="#ff00b910"/>
 
             <corners
                 android:bottomRightRadius="10dp"

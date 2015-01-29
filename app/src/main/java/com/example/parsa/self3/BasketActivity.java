@@ -24,6 +24,7 @@ import com.example.parsa.self3.DataModel.MenuFood;
 import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.DataModel.Shopping;
 import com.example.parsa.self3.Helper.FontHelper;
+import com.example.parsa.self3.Helper.StringHelper;
 import com.example.parsa.self3.Helper.Webservice;
 import com.example.parsa.self3.Interface.CallBack;
 import com.example.parsa.self3.R;
@@ -54,7 +55,7 @@ public class BasketActivity extends ActionBarActivity {
 
         lvBasket.setAdapter(adapter);
 
-        price.setText(Shopping.getBasketPrice() + "");
+        price.setText(StringHelper.commaSeparator(Shopping.getBasketPrice()+"") + " ریال");
 
         lvBasket.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
