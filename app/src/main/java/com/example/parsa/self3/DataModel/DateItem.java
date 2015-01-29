@@ -77,7 +77,7 @@ public class DateItem implements IListViewItem,Serializable {
         if (holder.today == null)
             holder.today = (TextView) view.findViewById(R.id.todayTxt);
 
-        holder.dateName.setText(date.getPersianWeekDayStr());
+        holder.dateName.setText(date.getPersianWeekDayStr() + "  "+"( امروز )");
         holder.dateNumber.setText(date.getIranianDate());
         holder.today.setText("");
 
@@ -87,7 +87,7 @@ public class DateItem implements IListViewItem,Serializable {
             view.setBackgroundResource(R.drawable.date_item_selected);
 
         if (new PersianCalendar().getGregorianDate().equals(date.getGregorianDate())) {
-            holder.today.setText("((امروز))");
+           // holder.today.setText("((امروز))");
             holder.dateName.setTextColor(Color.parseColor("#FF06880D"));
             holder.dateNumber.setTextColor(Color.parseColor("#FF06880D"));
             holder.today.setTextColor(Color.parseColor("#FF06880D"));

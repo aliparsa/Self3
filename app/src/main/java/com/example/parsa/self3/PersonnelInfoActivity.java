@@ -16,6 +16,7 @@ import com.example.parsa.self3.DataModel.GlobalData;
 import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.Helper.FontHelper;
 import com.example.parsa.self3.Helper.SettingHelper;
+import com.example.parsa.self3.Helper.StringHelper;
 import com.example.parsa.self3.R;
 
 public class PersonnelInfoActivity extends ActionBarActivity {
@@ -43,7 +44,7 @@ public class PersonnelInfoActivity extends ActionBarActivity {
 
         personnel_name.setText(GlobalData.getPersonnel().getName()+ " "+ GlobalData.getPersonnel().getFamily());
         personnel_national_code.setText((GlobalData.getPersonnel().getNationalNo() == null || GlobalData.getPersonnel().getNationalNo().equals("null")) ? "":GlobalData.getPersonnel().getNationalNo());
-        personnel_balance.setText(GlobalData.getPersonnel().getFinalCridit()+"");
+        personnel_balance.setText(StringHelper.commaSeparator(GlobalData.getPersonnel().getFinalCridit()+"")+ " ريال ");
 
 
         prepareActionBar();
