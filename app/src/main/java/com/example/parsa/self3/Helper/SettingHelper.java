@@ -26,4 +26,17 @@ public class SettingHelper {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(key,null);
     }
+
+    public void removeOption(String key) {
+        try {
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.remove(key);
+            editor.apply();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

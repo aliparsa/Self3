@@ -1,6 +1,8 @@
 package com.example.parsa.self3;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.Helper.FontHelper;
+import com.example.parsa.self3.Helper.SettingHelper;
 import com.example.parsa.self3.R;
 
 public class PersonnelInfoActivity extends ActionBarActivity {
@@ -22,12 +25,14 @@ public class PersonnelInfoActivity extends ActionBarActivity {
     Personnel personnel;
     private TextView title;
     private TextView logout;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personnel_info);
 
+        context=this;
 
         personnel = (Personnel) getIntent().getSerializableExtra("personnel");
 
@@ -47,7 +52,7 @@ public class PersonnelInfoActivity extends ActionBarActivity {
 
     private void prepareActionBar() {
 
-        View customActionBar = getLayoutInflater().inflate(R.layout.actionbar_basket_view, null);
+        View customActionBar = getLayoutInflater().inflate(R.layout.actionbar_user_view, null);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setCustomView(customActionBar);
@@ -89,12 +94,16 @@ public class PersonnelInfoActivity extends ActionBarActivity {
 
         logout = (TextView) customActionBar.findViewById(R.id.logout);
 
-
+        FontHelper.SetFontBold(this, FontHelper.Fonts.MAIN_FONT, logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //TODO logot user
+                SettingHelper settingHelper = new SettingHelper(context);
+                settingHelper.removeOption("uid");
+                Intent intent = new Intent(context,LoginActivity.class);
+                startActivity(intent);
             }
         });
 

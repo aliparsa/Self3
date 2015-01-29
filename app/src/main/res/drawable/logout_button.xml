@@ -7,7 +7,7 @@
     <item >
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <solid android:color="#ffffffff"/>
+        <solid android:color="#ffa31515"/>
 
         <corners
             android:bottomRightRadius="10dp"
