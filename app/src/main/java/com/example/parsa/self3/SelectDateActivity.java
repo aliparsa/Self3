@@ -115,7 +115,7 @@ public class SelectDateActivity extends ActionBarActivity {
         TextView title = (TextView) customActionBar.findViewById(R.id.ac_title);
         FontHelper.SetFontBold(this, FontHelper.Fonts.MAIN_FONT, title);
 
-        title.setText("مدیریت سریع");
+        title.setText("خروج");
         //ImageView back = (ImageView) customActionBar.findViewById(R.id.ac_back);
         LinearLayout back = (LinearLayout) customActionBar.findViewById(R.id.ac_back_layout);
 
@@ -135,24 +135,28 @@ public class SelectDateActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
+                Intent intent = new Intent(context,PersonnelInfoActivity.class);
+                intent.putExtra("personnel",personnel);
+                startActivity(intent);
 
 
 
-                new AlertDialog.Builder(context)
-                        .setTitle("اطلاعات پرسنل")
-                        //.setView(personnel.getView(context,null))
-                        .setMessage(
-                                "نام کاربر"+" : "+personnel.getName() + " "+personnel.getFamily()+"\n\n"+
-                                "اعتبار فعلی"+" : "+personnel.getFinalCridit()
-                        )
-                        .setNegativeButton("تایید", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
 
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-
-                        .show();
+//                new AlertDialog.Builder(context)
+//                        .setTitle("اطلاعات پرسنل")
+//                        //.setView(personnel.getView(context,null))
+//                        .setMessage(
+//                                "نام کاربر"+" : "+personnel.getName() + " "+personnel.getFamily()+"\n\n"+
+//                                "اعتبار فعلی"+" : "+personnel.getFinalCridit()
+//                        )
+//                        .setNegativeButton("تایید", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                            }
+//                        })
+//                        .setIcon(android.R.drawable.ic_dialog_alert)
+//
+//                        .show();
 
 
 

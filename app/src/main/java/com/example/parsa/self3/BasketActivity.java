@@ -97,7 +97,7 @@ public class BasketActivity extends ActionBarActivity {
         TextView title = (TextView) customActionBar.findViewById(R.id.ac_title);
         FontHelper.SetFontBold(this, FontHelper.Fonts.MAIN_FONT, title);
 
-        title.setText("مدیریت سریع");
+        title.setText("منو اصلی");
         //ImageView back = (ImageView) customActionBar.findViewById(R.id.ac_back);
         LinearLayout back = (LinearLayout) customActionBar.findViewById(R.id.ac_back_layout);
 

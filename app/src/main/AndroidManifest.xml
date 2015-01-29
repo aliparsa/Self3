@@ -35,6 +35,10 @@
             android:name=".BasketActivity"
             android:label="@string/title_activity_basket" >
         </activity>
+        <activity
+            android:name=".PersonnelInfoActivity"
+            android:label="@string/title_activity_personnel_info" >
+        </activity>
     </application>
 
 </manifest>

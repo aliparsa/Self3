@@ -318,9 +318,9 @@ public class Webservice {
             SERVER_ADDRESS = "http://192.168.0.11:6061";
 
         final String NAMESPACE = SERVER_ADDRESS + "/Areas/Buffet/Service/";
-        final String METHOD_NAME = "CancelReserves";
-        final String URL = SERVER_ADDRESS + "/areas/buffet/service/webserviceAndroid.asmx?op=CancelReserves";
-        final String SOAP_ACTION = SERVER_ADDRESS + "/Areas/Buffet/Service/CancelReserves";
+        final String METHOD_NAME = "Self3_CancelReserves";
+        final String URL = SERVER_ADDRESS + "/areas/buffet/service/webserviceAndroid.asmx?op=Self3_CancelReserves";
+        final String SOAP_ACTION = SERVER_ADDRESS + "/Areas/Buffet/Service/Self3_CancelReserves";
 
         SoapHelper soapHelper = new SoapHelper(context, NAMESPACE, METHOD_NAME, URL, SOAP_ACTION);
 
