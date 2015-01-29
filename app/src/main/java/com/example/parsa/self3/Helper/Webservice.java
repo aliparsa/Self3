@@ -550,7 +550,7 @@ public class Webservice {
                                 String deliveryStatus= object.getString("DeliveryStatus");
 
 
-                                ReserveHistory reserveHistory = new ReserveHistory(i+1,restaurant,planning,meal,date,paymentType,foods,deliveryStatus);
+                                ReserveHistory reserveHistory = new ReserveHistory(i+1,restaurant,planning,meal,date,paymentType,foods,"",deliveryStatus);
 
                                 reserveHistories.add(reserveHistory);
                             }
