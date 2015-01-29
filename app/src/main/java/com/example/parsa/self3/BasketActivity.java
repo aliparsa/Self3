@@ -120,9 +120,12 @@ public class BasketActivity extends ActionBarActivity {
         payment = (LinearLayout) customActionBar.findViewById(R.id.ac_action1);
 
         price = (TextView) customActionBar.findViewById(R.id.txt_price);
+        FontHelper.SetFontBold(this, FontHelper.Fonts.MAIN_FONT, price);
 
 //        shopping = (ImageView) customActionBar.findViewById(R.id.ac_action2);
 //
+
+
         payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
