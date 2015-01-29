@@ -518,8 +518,9 @@ public class Webservice {
                     String date1= object.getString("Date");
                     String paymentType= object.getString("PaymentType");
                     String foods= object.getString("Foods");
+                    String totalPrice= object.getString("TotalPrice");
                     String deliveryStatus= object.getString("DeliveryStatus");
-                    ReserveHistory reserveHistory = new ReserveHistory(i+1,restaurant,planning,meal,date1,paymentType,foods,deliveryStatus);
+                    ReserveHistory reserveHistory = new ReserveHistory(i+1,restaurant,planning,meal,date1,paymentType,foods,totalPrice,deliveryStatus);
                     reserveHistories.add(reserveHistory);
                 }
                 callback.onSuccess(reserveHistories);
@@ -582,10 +583,11 @@ public class Webservice {
                                 String date= object.getString("Date");
                                 String paymentType= object.getString("PaymentType");
                                 String foods= object.getString("Foods");
+                                String totalPrice= object.getString("TotalPrice");
                                 String deliveryStatus= object.getString("DeliveryStatus");
 
 
-                                ReserveHistory reserveHistory = new ReserveHistory(i+1,restaurant,planning,meal,date,paymentType,foods,"",deliveryStatus);
+                                ReserveHistory reserveHistory = new ReserveHistory(i+1,restaurant,planning,meal,date,paymentType,foods,totalPrice,deliveryStatus);
 
                                 reserveHistories.add(reserveHistory);
                             }
