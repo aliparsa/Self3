@@ -1,6 +1,7 @@
 package com.example.parsa.self3;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,10 +18,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.parsa.self3.Adapter.ListViewObjectAdapter;
+import com.example.parsa.self3.DataModel.AddReserveResponse;
 import com.example.parsa.self3.DataModel.Basket;
 import com.example.parsa.self3.DataModel.MenuFood;
+import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.DataModel.Shopping;
 import com.example.parsa.self3.Helper.FontHelper;
+import com.example.parsa.self3.Helper.Webservice;
+import com.example.parsa.self3.Interface.CallBack;
 import com.example.parsa.self3.R;
 
 import java.util.ArrayList;
@@ -31,6 +36,7 @@ public class BasketActivity extends ActionBarActivity {
     Context context;
     private LinearLayout payment;
     private TextView price;
+    private Personnel personnel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,8 @@ public class BasketActivity extends ActionBarActivity {
         setContentView(R.layout.activity_basket);
 
         context = this;
+
+        personnel = (Personnel) getIntent().getSerializableExtra("personnel");
 
         prepareActionBar();
 
@@ -120,8 +128,31 @@ public class BasketActivity extends ActionBarActivity {
             public void onClick(View view) {
 
                 //TODO reserve basket
-                ArrayList<MenuFood> menuFoods = Shopping.selectedFoods;
+                ArrayList<MenuFood> selectedFoods = Shopping.selectedFoods;
 
+                if (selectedFoods.size() > 0) {
+
+                    final ProgressDialog progDialog = ProgressDialog.show(context, "تبادل داده با سرور", "کمی صبر کنید", true);
+                    progDialog.show();
+                    String json = MenuFood.getJsonFromArrayList(selectedFoods);
+                    Webservice.AddReserve(context, json, personnel.getUid(), new CallBack<AddReserveResponse>() {
+                        @Override
+                        public void onSuccess(AddReserveResponse result) {
+                            progDialog.dismiss();
+                            Toast.makeText(context, " رزرو با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
+                            Shopping.selectedFoods.clear();
+                            finish();
+                        }
+
+                        @Override
+                        public void onError(String errorMessage) {
+                            progDialog.dismiss();
+                            Toast.makeText(context, " موفقیت آمیز نبود", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else{
+                    Toast.makeText(context, "سبد خرید خالی است", Toast.LENGTH_LONG).show();
+                }
             }
         });
 //

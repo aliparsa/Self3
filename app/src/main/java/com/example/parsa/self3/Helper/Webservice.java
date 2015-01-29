@@ -29,7 +29,7 @@ public class Webservice {
     private static final int RESULT_ERROR =101;
 
 
-    //-login-----------------------------------------------------
+    //----------------------------------------------------------------------------------------------
     public static void Login(Context context,final String username, final String password, final CallBack<Personnel> callback) {
 
         try {
@@ -101,7 +101,7 @@ public class Webservice {
             e.printStackTrace();
         }
     }
-    //-----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
     public static void GetMenuFoods(Context context,final String date, final String uid, final CallBack<ArrayList<MenuFood>> callback) {
 
         try {
@@ -209,7 +209,7 @@ public class Webservice {
             e.printStackTrace();
         }
     }
-    //-----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
     public static void GetReserves(Context context,final String date, final String uid, final CallBack<ArrayList<Reserve>> callback) {
 
         try {
@@ -308,7 +308,7 @@ public class Webservice {
             e.printStackTrace();
         }
     }
-    //----------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
     public static void CancelReserve(Context context,String reserveId, final CallBack<String> callback) {
 
     try {
@@ -368,8 +368,8 @@ public class Webservice {
         e.printStackTrace();
     }
 }
-    //-------------------------------------------------------------------------------
-    public static void AddReserve(Context context,String reserveJson,String cardNo , final CallBack<AddReserveResponse> callback) {
+    //----------------------------------------------------------------------------------------------
+    public static void AddReserve(Context context,String reserveJson,String uid , final CallBack<AddReserveResponse> callback) {
 
         try {
             SettingHelper setting = new SettingHelper(context);
@@ -378,9 +378,9 @@ public class Webservice {
                 SERVER_ADDRESS="http://192.168.0.11:6061";
 
             final String NAMESPACE = SERVER_ADDRESS+"/Areas/Buffet/Service/";
-            final String METHOD_NAME = "AddReserve";
-            final String URL = SERVER_ADDRESS+"/areas/buffet/service/webserviceAndroid.asmx?op=AddReserve";
-            final String SOAP_ACTION =SERVER_ADDRESS+ "/Areas/Buffet/Service/AddReserve";
+            final String METHOD_NAME = "Self3_AddReserve";
+            final String URL = SERVER_ADDRESS+"/areas/buffet/service/webserviceAndroid.asmx?op=Self3_AddReserve";
+            final String SOAP_ACTION =SERVER_ADDRESS+ "/Areas/Buffet/Service/Self3_AddReserve";
 
             SoapHelper soapHelper = new SoapHelper(context,NAMESPACE, METHOD_NAME, URL, SOAP_ACTION);
 
@@ -390,8 +390,8 @@ public class Webservice {
             names.add("basket");
             values.add(reserveJson);
 
-            names.add("cardNo");
-            values.add(cardNo);
+            names.add("uid");
+            values.add(uid);
 
 
 
@@ -435,7 +435,7 @@ public class Webservice {
             e.printStackTrace();
         }
 }
-    //------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
     public static void printRequest(Context context,String reserveIdes , final CallBack<String> callback) {
 
         try {
@@ -495,7 +495,7 @@ public class Webservice {
             e.printStackTrace();
         }
     }
-    //-----------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
     public static void GetHistory(Context context,final String date, final String uid, final CallBack<ArrayList<ReserveHistory>> callback) {
 
     try {
@@ -582,8 +582,8 @@ public class Webservice {
         e.printStackTrace();
     }
 }
-//----------------------------------------------------------------------------------
-public static void GetPersonnelInfo(Context context,final String uid, final CallBack<Personnel> callback) {
+    //----------------------------------------------------------------------------------------------
+    public static void GetPersonnelInfo(Context context,final String uid, final CallBack<Personnel> callback) {
 
     try {
         SettingHelper setting = new SettingHelper(context);
@@ -653,5 +653,5 @@ public static void GetPersonnelInfo(Context context,final String uid, final Call
         e.printStackTrace();
     }
 }
-    //-----------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
 }

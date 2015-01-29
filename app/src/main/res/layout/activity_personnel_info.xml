@@ -7,24 +7,27 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_margin="5dp"
         android:background="@drawable/personnel_items_frame"
+
         android:gravity="right">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="put name here"
             android:layout_alignParentLeft="true"
-            android:id="@+id/textView2" />
+            android:id="@+id/txt_personnel_name" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="نام کاربر"
             android:layout_alignParentRight="true"
-            android:id="@+id/txt_personnel_name" />
+            android:id="@+id/textView2" />
 
     </RelativeLayout>
 
@@ -32,13 +35,16 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+
         android:background="@drawable/personnel_items_frame"
         android:gravity="right">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="put national code here"
             android:layout_alignParentLeft="true"
             android:id="@+id/txt_personnel_national_code" />
@@ -46,25 +52,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="کد ملی"
             android:layout_alignParentRight="true"
             android:id="@+id/textv" />
 
     </RelativeLayout>
 
-
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+
         android:background="@drawable/personnel_items_frame"
         android:gravity="right">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="put balance here"
             android:layout_alignParentLeft="true"
             android:id="@+id/txt_personnel_balance" />
@@ -72,10 +80,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="اعتبار"
             android:layout_alignParentRight="true"
             android:id="@+id/textView3" />
 
     </RelativeLayout>
+
 </LinearLayout>

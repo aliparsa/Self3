@@ -224,6 +224,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
+                mViewPager.setCurrentItem(0);
                 Intent intent = new Intent(context,BasketActivity.class);
                 intent.putExtra("personnel",personnel);
                 intent.putExtra("dateItem",dateItem);

@@ -4,14 +4,36 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.example.parsa.self3.DataModel.Personnel;
 import com.example.parsa.self3.R;
 
 public class PersonnelInfoActivity extends Activity {
+
+    TextView personnel_name;
+    TextView personnel_national_code;
+    TextView personnel_balance;
+    Personnel personnel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personnel_info);
+
+
+        personnel = (Personnel) getIntent().getSerializableExtra("personnel");
+
+        // init
+        personnel_name = (TextView) findViewById(R.id.txt_personnel_name);
+        personnel_national_code = (TextView) findViewById(R.id.txt_personnel_national_code);
+        personnel_balance = (TextView) findViewById(R.id.txt_personnel_balance);
+
+
+        personnel_name.setText(personnel.getName()+ " "+ personnel.getFamily());
+        personnel_national_code.setText(personnel.getNationalNo()+"");
+        personnel_balance.setText(personnel.getFinalCridit()+"");
+
     }
 
 

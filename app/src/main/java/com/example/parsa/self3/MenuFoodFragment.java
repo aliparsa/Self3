@@ -33,6 +33,7 @@ public  class MenuFoodFragment extends Fragment {
     public static final String ARG_OBJECT = "object";
     private ListView foodMenuLV;
     private Context context;
+    MainActivity mainActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -63,7 +64,7 @@ public  class MenuFoodFragment extends Fragment {
             }
         });
 
-        MainActivity mainActivity = (MainActivity) getActivity();
+        mainActivity = (MainActivity) getActivity();
 
 
 
@@ -73,6 +74,19 @@ public  class MenuFoodFragment extends Fragment {
         ListViewObjectAdapter adapter = new ListViewObjectAdapter(getActivity(),loadingItems);
         foodMenuLV.setAdapter(adapter);
 
+
+
+
+
+
+
+        return rootView;
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
 
 
         Webservice.GetMenuFoods(getActivity(), mainActivity.dateItem.getDate().getGregorianDate(), mainActivity.personnel.getUid(), new CallBack<ArrayList<MenuFood>>() {
@@ -98,12 +112,5 @@ public  class MenuFoodFragment extends Fragment {
             }
         });
 
-
-
-        return rootView;
     }
-
-
-
-
 }

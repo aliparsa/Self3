@@ -27,6 +27,7 @@ import java.util.ArrayList;
 public  class ReserveFragment extends Fragment {
     public static final String ARG_OBJECT = "object";
     ListView reserveLV;
+    MainActivity mainActivity;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -41,7 +42,7 @@ public  class ReserveFragment extends Fragment {
 
         reserveLV = (ListView) rootView.findViewById(R.id.reserveLV);
 
-        MainActivity mainActivity = (MainActivity) getActivity();
+        mainActivity = (MainActivity) getActivity();
 
 
         // set loading to list view
@@ -52,28 +53,7 @@ public  class ReserveFragment extends Fragment {
 
 
 
-        Webservice.GetReserves(getActivity(),mainActivity.dateItem.getDate().getGregorianDate(),mainActivity.personnel.getUid(),new CallBack<ArrayList<Reserve>>() {
-            @Override
-            public void onSuccess(ArrayList<Reserve> result) {
 
-                if (result.size()<1){
-                    ArrayList<NoItem> noItems = new ArrayList<NoItem>();
-                    noItems.add(new NoItem());
-                    ListViewObjectAdapter adapter = new ListViewObjectAdapter(getActivity(),noItems);
-                    reserveLV.setAdapter(adapter);
-                    return;
-                }
-
-                ListViewObjectAdapter adapter = new ListViewObjectAdapter(getActivity(),result);
-                reserveLV.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-
-            }
-        });
 
         reserveLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -131,5 +111,35 @@ public  class ReserveFragment extends Fragment {
 
 
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+        Webservice.GetReserves(getActivity(),mainActivity.dateItem.getDate().getGregorianDate(),mainActivity.personnel.getUid(),new CallBack<ArrayList<Reserve>>() {
+            @Override
+            public void onSuccess(ArrayList<Reserve> result) {
+
+                if (result.size()<1){
+                    ArrayList<NoItem> noItems = new ArrayList<NoItem>();
+                    noItems.add(new NoItem());
+                    ListViewObjectAdapter adapter = new ListViewObjectAdapter(getActivity(),noItems);
+                    reserveLV.setAdapter(adapter);
+                    return;
+                }
+
+                ListViewObjectAdapter adapter = new ListViewObjectAdapter(getActivity(),result);
+                reserveLV.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+
+            }
+        });
+
     }
 }
